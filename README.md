@@ -7,10 +7,7 @@ GWG Project 4 - Feed Reader Testing w/Jasmine
 * **Built With**
 * **Sources Used**
 
-### How to Run Easily
-[View here](https://drummgurl.github.io/Feed-Reader/) to see online.
-
-### How to Run Locally
+### Run Locally on Your Own Computer
 * Click "Clone in Desktop" / "Download ZIP"
 * Open the folder
 * Open `index.html` on your preferred browser
