@@ -38,7 +38,6 @@ $(function() {
 			}
 		});
 
-
         /* TODO: Write a test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
@@ -51,7 +50,6 @@ $(function() {
 		});
 		
 	});
-
 
     /* TODO: Write a new test suite named "The menu" */
 	describe('The menu', function() {
@@ -75,6 +73,7 @@ $(function() {
 			const body = document.querySelector('body');
 			const menu = document.querySelector('.menu-icon-link');
 			
+			//on click to show and hide sidebar menu
 			menu.click();
 			expect(body.classList.contains('menu-hidden')).toBe(false);
 			
@@ -108,22 +107,25 @@ $(function() {
          * by the loadFeed function that the content actually changes.
          * Remember, loadFeed() is asynchronous.
          */
+		
+		//load feed h1, header-titles
 		beforeEach(function(done) {
 			loadFeed(0);
 			feed = $('h1.header-title')[0].innerText;
 			done();
 			});
-			
+		
+		//load newFeed h1, header-titles
 		afterEach(function(done) {
 			loadFeed(1);
 			newFeed = $('h1.header-title')[0].innerText;
 			done();
 		});
 		
+		//compare the h1, header-titles and do not show duplicates
 		it('new feed loaded', function(done) {
 			expect(feed).not.toEqual(newFeed);
 			done();
-				
 			});
 	});
 });
