@@ -17,6 +17,7 @@ $(function() {
             expect(allFeeds.length).not.toBe(0);
         });
 
+
         //A test that loops through each feed in the allFeeds object and ensures it has a URL defined and that the URL is not empty.
 		it('loop through urls', function() {
 			for(let feed of allFeeds) {
@@ -72,26 +73,23 @@ $(function() {
 	
     //A test named "New Feed Selection"
 	describe('New Feed Selection', function() {
-		let feed;
-		let newFeed;
+		const feed = document.querySelector('.feed');
+		const newFeed = [];
         
 		//A new feed is loaded by the loadFeed function that the content actually changes.
 		beforeEach(function(done) {
 			loadFeed(0);
-			//Load feed header-titles
-			feed = $('h1.header-title')[0].innerText;
-			done();
-		
-			//Load newFeed header-titles
-			loadFeed(1);
-			newFeed = $('h1.header-title')[0].innerText;
-			done();
+			Array.from(feed.children).forEach(function(entry) {
+				newFeed.push(entry.innerText);
+			});
+			loadFeed(1,done);
 		});
 		
-		//Compare the header-titles and do not show duplicates
-		it('new feed loaded', function(done) {
+		//Compare feeds, omit duplicates
+		it('new feed loaded', function() {
+			Array.from(feed.children).forEach(function(entry,index) {
 			expect(feed).not.toEqual(newFeed);
-			done();
-		});
+			});
 	});
+});
 });
