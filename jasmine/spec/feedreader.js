@@ -84,7 +84,7 @@ $(function() {
 				Array.from(feed.children).forEach(function(entry) {
 					newFeed.push(entry.innerText);
 				});
-				//loads newfeed after done loading feed
+				//loads newfeed after done loading original feed
 				loadFeed(1,done);
 			});
 		});
