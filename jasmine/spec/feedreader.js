@@ -22,7 +22,7 @@ $(function() {
 		it('loop through urls', function() {
 			for(let feed of allFeeds) {
 				expect(feed.url).toBeDefined();
-				expect(feed.url.length).not.toBe(0);
+				expect(feed.url).toBeTruthy();
 			}
 		});
 
@@ -78,11 +78,15 @@ $(function() {
         
 		//A new feed is loaded by the loadFeed function that the content actually changes.
 		beforeEach(function(done) {
-			loadFeed(0);
-			Array.from(feed.children).forEach(function(entry) {
-				newFeed.push(entry.innerText);
+			//this feed loads first
+			loadFeed(0, function(){
+				//loads entries into an array
+				Array.from(feed.children).forEach(function(entry) {
+					newFeed.push(entry.innerText);
+				});
+				//loads newfeed after done loading feed
+				loadFeed(1,done);
 			});
-			loadFeed(1,done);
 		});
 		
 		//Compare feeds, omit duplicates
